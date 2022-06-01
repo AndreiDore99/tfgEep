@@ -1,4 +1,4 @@
-package andrei.tfg.Model;
+package andrei.tfg.Service.ServiceImpl;
 
 import andrei.tfg.Model.Articulos.Articulo.Articulo;
 import andrei.tfg.Model.Articulos.Bocadillos.Bocadillos;
@@ -15,9 +15,10 @@ import andrei.tfg.Service.ServiceImpl.Articulos.Postres.PostreServiceImpl;
 import andrei.tfg.Service.ServiceImpl.Articulos.Refrescos.RefrescoServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-
+@Service("plantilla")
 public class Plantilla {
     @Autowired
     @Qualifier("articuloServiceImpl")

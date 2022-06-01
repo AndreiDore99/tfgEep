@@ -5,16 +5,15 @@ import andrei.tfg.Model.Articulos.Cafes.Cafe;
 import andrei.tfg.Model.Articulos.Platos.Plato;
 import andrei.tfg.Model.Articulos.Postres.Postre;
 import andrei.tfg.Model.Articulos.Refrescos.Refresco;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 
-@NoArgsConstructor
-@AllArgsConstructor
-@Data
 @Entity
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public  class Articulo {
     @Id
     @GeneratedValue

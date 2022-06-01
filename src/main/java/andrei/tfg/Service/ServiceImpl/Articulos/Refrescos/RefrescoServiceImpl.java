@@ -1,6 +1,7 @@
 package andrei.tfg.Service.ServiceImpl.Articulos.Refrescos;
 
 import andrei.tfg.Model.Articulos.Articulo.Articulo;
+import andrei.tfg.Model.Articulos.Cafes.Cafe;
 import andrei.tfg.Model.Articulos.Refrescos.Refresco;
 import andrei.tfg.Repository.Articulos.Articulo.ArticuloRepository;
 import andrei.tfg.Repository.Articulos.Refrescos.RefrescosRepository;
@@ -26,7 +27,16 @@ public class RefrescoServiceImpl implements RefrescoService {
 
     @Override
     public Refresco aniadirRefresco(Refresco refrescoNuevo) {
-        return refrescoJpa.save(refrescoNuevo);
+        Articulo articuloNuevo= new Articulo(refrescoNuevo);
+        articuloJpa.save(articuloNuevo);
+        List<Articulo> lista=articuloJpa.findAll();
+        Refresco refresco = null;
+        for (Articulo articulo:lista) {
+            if (refrescoNuevo.getNombre().equals(articulo.getNombre())){
+                refresco= new Refresco(articulo.getId(),articulo.getNombre(),articulo.getIngredientes(),articulo.getPrecio());
+            }
+        }
+        return refrescoJpa.save(refresco);
     }
 
     @Override

@@ -8,5 +8,5 @@ import java.io.Serializable;
 
 @Repository("cafeJpa")
 public interface CafeRepository extends JpaRepository<Cafe, Serializable> {
-    abstract Cafe findByNombre(String nombre);
+     Cafe findByNombre(String nombre);
 }

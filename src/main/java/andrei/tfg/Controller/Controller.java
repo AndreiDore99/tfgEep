@@ -1,9 +1,10 @@
 package andrei.tfg.Controller;
 
 
-import andrei.tfg.Model.Plantilla;
+import andrei.tfg.Service.ServiceImpl.Plantilla;
 import andrei.tfg.Model.Usuario.Usuario;
-import andrei.tfg.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -13,6 +14,9 @@ public class Controller {
 
     private static Usuario us = new Usuario();
     private static EnlacesHtml enlace = new EnlacesHtml();
+    @Autowired
+    @Qualifier("plantilla")
+    private  Plantilla plantilla;
 
     @GetMapping
     public ModelAndView inicio(){
@@ -28,8 +32,7 @@ public class Controller {
     }
     @GetMapping("plantillaCarta")
     public void plantillaCarta(){
-        Plantilla plantilla = new Plantilla();
-        plantilla.prueba();
+        plantilla.darDeAltaCarta();
     }
 
 }

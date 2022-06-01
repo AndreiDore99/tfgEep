@@ -1,7 +1,6 @@
 package andrei.tfg.Service.ServiceImpl.Articulos.Cafes;
 
 import andrei.tfg.Model.Articulos.Articulo.Articulo;
-import andrei.tfg.Model.Articulos.Bocadillos.Bocadillos;
 import andrei.tfg.Model.Articulos.Cafes.Cafe;
 import andrei.tfg.Repository.Articulos.Articulo.ArticuloRepository;
 import andrei.tfg.Repository.Articulos.Cafes.CafeRepository;
@@ -28,12 +27,12 @@ public class CafeServiceImpl implements CafeService {
 
     @Override
     public Cafe aniadirCafe(Cafe cafeNuevo) {
-        Articulo articuloNuevo = new Articulo(cafeNuevo);
+        Articulo articuloNuevo= new Articulo(cafeNuevo);
         articuloJpa.save(articuloNuevo);
-        List<Articulo> lista = articuloJpa.findAll();
+        List<Articulo> lista=articuloJpa.findAll();
         Cafe cafe = null;
         for (Articulo articulo:lista) {
-            if (cafe.getNombre().equals(articulo.getNombre())){
+            if (cafeNuevo.getNombre().equals(articulo.getNombre())){
                 cafe= new Cafe(articulo.getId(),articulo.getNombre(),articulo.getIngredientes(),articulo.getPrecio());
             }
         }
