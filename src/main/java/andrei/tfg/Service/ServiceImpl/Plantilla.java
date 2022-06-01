@@ -15,11 +15,23 @@ import andrei.tfg.Service.ServiceImpl.Articulos.Postres.PostreServiceImpl;
 import andrei.tfg.Service.ServiceImpl.Articulos.Refrescos.RefrescoServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.boot.ApplicationArguments;
+import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.List;
+
 @Service("plantilla")
-public class Plantilla {
+public class Plantilla implements ApplicationRunner {
+    @Override
+    public void run(ApplicationArguments args) throws Exception {
+        List<Articulo> lista = artService.listarTodosArticulos();
+        if (lista.size()==0){
+            this.darDeAltaCarta();
+        }
+
+    }
     @Autowired
     @Qualifier("articuloServiceImpl")
     ArticuloServiceImpl artService;
@@ -40,7 +52,7 @@ public class Plantilla {
     public BocadilloServiceImpl bocadilloService;
 
 
-    public void darDeAltaCarta(){
+    public void darDeAltaCarta() {
         ArrayList<Bocadillos> listaBocatas = new ArrayList<>();
         ArrayList<Cafe> listaCafes = new ArrayList<>();
         ArrayList<Plato> listaPlatos = new ArrayList<>();
@@ -92,8 +104,7 @@ public class Plantilla {
         }
     }
 
-    public void prueba(){
-        Articulo art = new Articulo(0,"nestea","",1.2);
-        System.out.println(artService.aniadirArticulo(art));
-    }
+
+
+
 }
