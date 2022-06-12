@@ -1,6 +1,8 @@
 package andrei.tfg.Controller;
 
 
+import andrei.tfg.Model.Articulos.Articulo.Articulo;
+import andrei.tfg.Service.ServiceImpl.Articulos.Articulo.ArticuloServiceImpl;
 import andrei.tfg.Service.ServiceImpl.Plantilla;
 import andrei.tfg.Model.Usuario.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,12 +10,18 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/")
 public class Controller {
 
     private static Usuario us = new Usuario();
     private static EnlacesHtml enlace = new EnlacesHtml();
+    @Autowired
+    @Qualifier("articuloServiceImpl")
+    public static ArticuloServiceImpl articuloService;
+
     @Autowired
     @Qualifier("plantilla")
     private  Plantilla plantilla;
@@ -30,9 +38,15 @@ public class Controller {
             return new ModelAndView(enlace.INICIO);
         }else return new ModelAndView(enlace.ENTRAR);
     }
-    @GetMapping("plantillaCarta")
-    public void plantillaCarta(){
-        plantilla.darDeAltaCarta();
+    @GetMapping("carta")
+    public ModelAndView verCarta(){
+        List < Articulo> listaArticulos = articuloService.listarTodosArticulos();
+        ModelAndView mav = new ModelAndView();
+        mav.addObject(enlace.CARTA);
+        mav.addObject(listaArticulos);
+        return mav;
     }
+
+
 
 }

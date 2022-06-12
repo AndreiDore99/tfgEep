@@ -6,4 +6,5 @@ public class EnlacesHtml {
 
     final String INICIO="indexAdministrador.html";
     final String ENTRAR="loggin.html";
+    final String CARTA ="listarProcuctos.html";
 }

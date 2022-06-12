@@ -1,9 +1,13 @@
 package andrei.tfg.Repository.MesaSala;
 
+import andrei.tfg.Model.Articulos.Articulo.Articulo;
 import andrei.tfg.Model.MesaSala.MesaSala1;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-@Repository("mesaSala1Repository")
-public interface MesaSala1Repository {
-    abstract MesaSala1 buscarPorNombre(String nombre);
+import java.io.Serializable;
+
+@Repository("mesaSala1Jpa")
+public interface MesaSala1Repository extends JpaRepository<Articulo, Serializable> {
+     Articulo findByNombre(String nombre);
 }
