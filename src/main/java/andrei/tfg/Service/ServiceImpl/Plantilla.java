@@ -6,7 +6,6 @@ import andrei.tfg.Model.Articulos.Cafes.Cafe;
 import andrei.tfg.Model.Articulos.Platos.Plato;
 import andrei.tfg.Model.Articulos.Postres.Postre;
 import andrei.tfg.Model.Articulos.Refrescos.Refresco;
-import andrei.tfg.Service.Articulos.Articulos.ArticuloService;
 import andrei.tfg.Service.ServiceImpl.Articulos.Articulo.ArticuloServiceImpl;
 import andrei.tfg.Service.ServiceImpl.Articulos.Bocadillo.BocadilloServiceImpl;
 import andrei.tfg.Service.ServiceImpl.Articulos.Cafes.CafeServiceImpl;
